@@ -1,0 +1,45 @@
+/* Styles T'CHAT */
+/* Menu styles */
+#menu-salons li:last-of-type a{
+    color: red;
+    text-shadow: none;
+}
+
+li{
+    list-style: none;
+}
+li li {
+    list-style: square;
+}
+
+/* Formulaire */
+form.form-message {
+    /*! position: absolute ; */
+    width: 700px;
+    bottom :1rem;
+}
+.form-message input[type="text"] {
+    width: 80%;
+    border: 0
+}
+.form-message input {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+}
+.form-message input[type="submit"] {
+    border-radius: 0;
+    width: 19%;
+    box-shadow: none;
+}
+.form-message label {
+    display: none ;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 2rem;
+    background: #505050;
+    width: 100%;
+}
