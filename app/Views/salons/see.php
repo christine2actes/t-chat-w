@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Liste des utilisateurs']) ?>
+<?php $this->layout('layout', ['title' => 'Salon : ' .$this -> e($salon['nom'])]) ?>
 
 <?php $this->start('main_content') ?>
     <h2>Vous êtes sur le salon : <?php echo $this -> e($salon['nom']); ?> </h2>

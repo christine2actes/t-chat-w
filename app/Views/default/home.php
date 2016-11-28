@@ -1,6 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Accueil de t\'chat']) ?>
 
 <?php $this->start('main_content') ?>
+	<h2>Bonjour <?php echo $_SESSION['user']['pseudo']; ?> </h2>
 	<h3>Bienvenue sur T'chat !</h3>
-	<p>Page d'accueil. Bravo !!!</p>
+	<p>Le super chat de WF3 !!!</p>
 <?php $this->stop('main_content') ?>

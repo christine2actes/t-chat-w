@@ -14,13 +14,19 @@
 			<h1><?= $this->e($title) ?></h1>
 		</header>
 		<aside>
-			<h3><a href="<?= $this -> url('default_home') ?>">Les salons</a></h3>
+			<h3><a href="<?= $this -> url('default_home') ?>">LES SALONS</a></h3>
 			<nav>
 			    <ul id="menu-salons">
-                    <li><a href="<?= $this -> url('default_home') ?>">Retour à l'accueil</a></li>
-			        <li><a href="<?= $this -> url('users_list') ?>">Liste des utilisateurs</a></li>
-			        <li><a href="deconnexion.php">Déconnexion</a></li>
+                    <?php
+                    foreach($salons as $salon) : ?>
+                    <li><a href="<?php echo $this->url('see_salon', array('id'=>$salon['id'])); ?>"> <?php echo $this->e($salon['nom']) ; ?> </a></li>
+                    <?php endforeach ; ?>
 			    </ul>
+                <ul id="menu-bottom">
+                    <li><a href="<?= $this -> url('users_list') ?>">Liste des utilisateurs</a></li>
+                    <li class="bottom"><a href="<?= $this -> url('default_home') ?>">Retour à l'accueil</a></li>
+                    <li><a href="<?php echo $this -> url('logout') ?>">Déconnexion</a></li>
+                </ul>
 			</nav>
 		</aside>
 
