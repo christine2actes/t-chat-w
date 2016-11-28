@@ -2,11 +2,10 @@
 
 namespace Controller;
 
-use \W\Controller\Controller;
 use Model\SalonsModel;
 use Model\MessagesModel;
 
-class SalonController extends Controller
+class SalonController extends BaseController
 {
 
 	/**
@@ -25,7 +24,10 @@ class SalonController extends Controller
         // j'utilise la méthode search qui me permet d'exécuter la reqête suivante :
         // SELECT * FROM messages WHERE id_salon = $id
         // Cette méthode me renvoie l'équivalent d'un fetchAll, càd un tableau de tableau (tableau à deux dimentions)
-        $messages = $messagesModel -> search(array ('id_salon' => $id), 'OR', FALSE);
+        // $messages = $messagesModel -> search(array ('id_salon' => $id), 'OR', FALSE);
+
+		// J'uitilise une méthode propre au model message qui permet de récupérer les messages avec les infos utilisateur associées
+		$messages = $messagesModel -> searchAllWithUserInfos($id);
 
         $this -> show('salons/see', array('salon' => $salon, 'messages' => $messages));
 	}

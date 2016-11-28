@@ -1,4 +1,4 @@
-<?php $this->layout('layout_test', ['title' => 'Liste des utilisateurs']) ?>
+<?php $this->layout('layout', ['title' => 'Liste des utilisateurs']) ?>
 
 <?php $this->start('main_content') ?>
     <h2>Vous êtes sur le salon : <?php echo $this -> e($salon['nom']); ?> </h2>
@@ -6,7 +6,7 @@
     <h3>Fil de discussion :</h3>
     <ol>
         <?php foreach ($messages as $message) : ?>
-        <li><span class="message"><?php echo $this->e($message['corps']) ; ?></span></li>
+        <li><span><?php echo $this->e($message['pseudo']) ; ?> : </span><span class="message"><?php echo $this->e($message['corps']) ; ?></span></li>
     <?php endforeach ?>
     </ol>
 

@@ -1,4 +1,4 @@
-<?php $this->layout('layout_test', ['title' => 'Page de test 1']) ?>
+<?php $this->layout('layout', ['title' => 'Page de test 1']) ?>
 
 <?php $this->start('main_content') ?>
 	<h2>Hello Test !!! </h2>

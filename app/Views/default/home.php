@@ -1,4 +1,4 @@
-<?php $this->layout('layout_test', ['title' => 'Accueil de t\'chat']) ?>
+<?php $this->layout('layout', ['title' => 'Accueil de t\'chat']) ?>
 
 <?php $this->start('main_content') ?>
 	<h3>Bienvenue sur T'chat !</h3>
