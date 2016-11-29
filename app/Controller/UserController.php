@@ -143,8 +143,8 @@ class UserController extends BaseController
 
 				$initialAvatarPath = $_FILES['avatar']['tmp_name'];
 				$avatarNewName = md5(time() . uniqid());
-				$targetPath = realpath('assets/uploads/' . $avatarNewName);
-				move_uploaded_file($initialAvatarPath, $targetPath);
+				$targetPath = realpath('assets/uploads');
+				move_uploaded_file($initialAvatarPath, $targetPath . '/' . $avatarNewName);
 
 				// On met à jour le nouveau nom de l'avatar dans $datas pour l'insérer dans la BDD
 				$datas['avatar'] = $avatarNewName;

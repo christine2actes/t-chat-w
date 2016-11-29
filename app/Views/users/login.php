@@ -13,8 +13,8 @@
         </p>
         <p>
             <label for="pass">Veuillez entrer votre mot de passe :
-            <input type="password" name="pass" id="pseudo"></label>
-            <span><?php echo ( !empty ($erreurs['pseudo']) ? $erreurs['pseudo'] : '') ; ?></span>
+            <input type="password" name="pass" id="pass"></label>
+            <span><?php echo ( !empty ($erreurs['pass']) ? $erreurs['pass'] : '') ; ?></span>
         </p>
         <p>
             <input type="submit" class="button" value="Me connecter">
