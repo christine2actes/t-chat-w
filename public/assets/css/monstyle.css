@@ -50,7 +50,7 @@ footer {
 
 /* Messages d'erreurs */
 .alert {
-    padding: .5rem;
+    padding: .5rem 1rem .5rem .5rem;
     background-color: red;
     margin-bottom: .5rem;
     border: .1rem #fff solid;
