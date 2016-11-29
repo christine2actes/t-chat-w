@@ -42,5 +42,7 @@
             <p>RTFM dans <strong><a href="../docs/tuto/" title="Documentation de W">docs/tuto</a></strong>.</p>
 		</footer>
 	</div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="<?= $this->assetUrl('js/close-flash-messages.js') ?>"></script>
 </body>
 </html>

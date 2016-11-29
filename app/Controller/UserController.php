@@ -40,18 +40,19 @@ class UserController extends BaseController
 		// }
 
 		if ( !empty($_POST) ) {
-			// $erreurs = array();
 			if ( empty($_POST['pseudo'])) {
 				// ajouter un message d'erreur
-				// return $erreurs['pseudo'] = "Le champ pseudo est vide." ;
+				$this->getFlashMessenger()->error('Vous n\'avez pas renseigné votre pseudo');
 			}
 			if ( empty($_POST['pass'])) {
 				// ajouter un message d'erreur
+				$this->getFlashMessenger()->error('Vous n\'avez pas renseigné votre mot de passe');
 			}
 
 			$auth = new AuthentificationModel();
 
-			if ( !empty($_POST['pseudo']) && !empty($_POST['pass']) ) {
+			// if ( !empty($_POST['pseudo']) && !empty($_POST['pass']) ) {
+			if ( ! $this->getFlashMessenger()->hasErrors() ) {
 				$pseudo = $_POST['pseudo'];
 				$pass = $_POST['pass'];
 				$idUser = $auth -> isValidLoginInfo($pseudo, $pass); // isValidLoginInfo renvoir l'id de l'utilisateur
@@ -62,6 +63,7 @@ class UserController extends BaseController
 					$this -> redirectToRoute('default_home');
 				} else {
 					// message d'erreur : infos de connexion incorrectes !
+					$this->getFlashMessenger()->error('Vos informations de connexion sont incorrectes !');
 				}
 			}
 
@@ -74,6 +76,10 @@ class UserController extends BaseController
 		$auth = new AuthentificationModel();
 		$auth -> logUserOut();
 		$this -> redirectToRoute('login');
+	}
+
+	public function register() {
+		$this->show('users/register');
 	}
 
 }

@@ -4,13 +4,15 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \Model\SalonsModel;
+use \Plasticbrain\FlashMessages\FlashMessages;
 
 class BaseController extends Controller
 {
-    /*
-    * Ce champ va définir l'engine de Plates qui va servir à afficher mes vues
-    */
+
+    // Ce champ va définir l'engine de Plates qui va servir à afficher mes vues
     protected $engine;
+    // Ce champ contiendra une instance de flash messenger de php-flash-messages
+    protected $fmsg;
 
     public function __construct() {
         // J'appelle parent::__construct(); (construct de la classe parente) car je redéfinie le construct,
@@ -27,6 +29,9 @@ class BaseController extends Controller
 		$app = getApp();
         $salonsModel = new SalonsModel();
 
+        // J'instancie un objet de la class FlashMessage
+        $this->fmsg = new FlashMessages();
+
 		// Rend certaines données disponibles à tous les vues
 		// accessible avec $w_user & $w_current_route dans les fichiers de vue
 		$this->engine->addData(
@@ -35,8 +40,10 @@ class BaseController extends Controller
 				'w_current_route' => $app->getCurrentRoute(),
 				'w_site_name'	  => $app->getConfig('site_name'),
                 'salons'          => $salonsModel->findAll(),
+                'fmsg'            => $this->getFlashMessenger(),
 			]
 		);
+
     }
 
     public function show($file, array $data = array()) {
@@ -55,6 +62,11 @@ class BaseController extends Controller
     */
     public function addGlobalData(array $datas) {
         $this->engine->addData($datas);
+    }
+
+    // Retourne une instance du flash messenger de php-flash-messages
+    public function getFlashMessenger() {
+        return $this->fmsg;
     }
 
 }
