@@ -25,7 +25,13 @@
                 <ul id="menu-bottom">
                     <li><a href="<?= $this -> url('users_list') ?>">Liste des utilisateurs</a></li>
                     <li class="bottom"><a href="<?= $this -> url('default_home') ?>">Retour à l'accueil</a></li>
+                    <?php if ($w_user) : ?>
                     <li><a href="<?php echo $this -> url('logout') ?>">Déconnexion</a></li>
+                    <?php endif ?>
+                    <?php if (!$w_user) : ?>
+                    <li><a href="<?php echo $this -> url('login') ?>">Connexion</a></li>
+                    <li><a href="<?php echo $this -> url('register') ?>">Inscription</a></li>
+                    <?php endif ?>
                 </ul>
 			</nav>
 		</aside>

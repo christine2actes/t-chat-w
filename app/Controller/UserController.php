@@ -141,13 +141,16 @@ class UserController extends BaseController
 				$auth = new AuthentificationModel();
 				$datas['pass'] = $auth->hashPassword($datas['pass']);
 
-				$initialAvatarPath = $_FILES['avatar']['tmp_name'];
-				$avatarNewName = md5(time() . uniqid());
-				$targetPath = realpath('assets/uploads');
-				move_uploaded_file($initialAvatarPath, $targetPath . '/' . $avatarNewName);
-
-				// On met à jour le nouveau nom de l'avatar dans $datas pour l'insérer dans la BDD
-				$datas['avatar'] = $avatarNewName;
+				if (!empty ($_FILES['avatar']['tmp_name'])) {
+					$initialAvatarPath = $_FILES['avatar']['tmp_name'];
+					$avatarNewName = md5(time() . uniqid());
+					$targetPath = realpath('assets/uploads');
+					move_uploaded_file($initialAvatarPath, $targetPath . '/' . $avatarNewName);
+					// On met à jour le nouveau nom de l'avatar dans $datas pour l'insérer dans la BDD
+					$datas['avatar'] = $avatarNewName;
+				} else {
+					$datas['avatar'] = 'avatar-default.png';
+				}
 
 				// Insertion dans la BDD
 				$utilisateursModel = new UtilisateursModel();
